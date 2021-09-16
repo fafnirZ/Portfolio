@@ -1,0 +1,13 @@
+body {
+  margin: 0;
+}
+
+:root {
+  --background-color: #25262A;
+  --primary: #ffffff;
+  --secondary: #60C697;
+}
+
+.App {
+  background: var(--background-color);
+}
