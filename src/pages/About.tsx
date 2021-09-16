@@ -1,6 +1,7 @@
 import React, { ReactElement, useState, useEffect } from 'react';
 import { useTheme } from '@material-ui/core/styles';
 import { Box, Grid, Typography, Card, useMediaQuery } from '@material-ui/core';
+import CodeIcon from '@material-ui/icons/Code';
 import styled from 'styled-components';
 
 const Information = [
@@ -44,6 +45,9 @@ const CardContainer = styled(Card)`
 const About: React.FC = ({}): ReactElement => {
   const theme = useTheme();
   const mdDown = useMediaQuery(theme.breakpoints.down('md'));
+
+  const cardColor = getComputedStyle(document.documentElement).getPropertyValue('--card-default')
+
   return (
     <Box margin={mdDown ? "50px" : "150px"}>
       <Grid container justifyContent="space-between" spacing={5}>
@@ -72,7 +76,7 @@ const About: React.FC = ({}): ReactElement => {
               return (
                 <CardContainer
                   style={{
-                    background: "#2F3034"
+                    background: cardColor
                   }}
                   elevation={10}
                 >
@@ -82,6 +86,7 @@ const About: React.FC = ({}): ReactElement => {
                   <Typography variant="body1" color="secondary">
                     {card.content} 
                   </Typography>
+                  <CodeIcon color="secondary" />
                 </CardContainer>
               )
             })}

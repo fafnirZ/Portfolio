@@ -9,6 +9,7 @@ import './css/style.css';
 // page imports
 import Homepage from './pages/Homepage';
 import About from './pages/About';
+import Projects from './pages/Projects';
 
 // component imports
 import Sidebar from './components/Sidebar';
@@ -51,6 +52,7 @@ function App() {
               <Switch>
                 <Route exact path="/" component={Homepage}/>
                 <Route exact path="/about" component={About}/>
+                <Route exact path="/projects" component={Projects}/>
               </Switch>
             </Box>
           </Box>
