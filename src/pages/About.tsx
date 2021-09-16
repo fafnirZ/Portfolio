@@ -1,5 +1,6 @@
 import React, { ReactElement, useState, useEffect } from 'react';
-import { Box, Grid, Typography, Card } from '@material-ui/core';
+import { useTheme } from '@material-ui/core/styles';
+import { Box, Grid, Typography, Card, useMediaQuery } from '@material-ui/core';
 import styled from 'styled-components';
 
 const Information = [
@@ -34,15 +35,17 @@ const Cards = [
 
 const CardContainer = styled(Card)`
   height: 100px;
-  width: 300px;
+  width: min(70%, 300px);
   border-radius: 3px;
   padding: 5px;
 `;
 
 
 const About: React.FC = ({}): ReactElement => {
+  const theme = useTheme();
+  const mdDown = useMediaQuery(theme.breakpoints.down('md'));
   return (
-    <Box margin="150px">
+    <Box margin={mdDown ? "50px" : "150px"}>
       <Grid container justifyContent="space-between" spacing={5}>
         <Grid item xs={12} md={5}>
           {Information.map((obj)=> {
@@ -62,6 +65,7 @@ const About: React.FC = ({}): ReactElement => {
           <Box
             display="flex"
             flexDirection="column"
+            alignItems="center"
             gridGap="20px"
           >
             {Cards.map((card) => {

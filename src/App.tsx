@@ -1,7 +1,7 @@
 // import dependencies
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { Box, ThemeProvider, createTheme } from '@material-ui/core';
+import { Box, ThemeProvider, createTheme, Hidden } from '@material-ui/core';
 
 //global stylesheet
 import './css/style.css';
@@ -44,11 +44,15 @@ function App() {
       <Router>
         <ThemeProvider theme={theme}>
           <Box display="flex">
-            <Sidebar page={page} setPage={handleSetPage}/>
-            <Switch>
-              <Route exact path="/" component={Homepage}/>
-              <Route exact path="/about" component={About}/>
-            </Switch>
+            <Hidden mdDown>
+              <Sidebar page={page} setPage={handleSetPage}/>
+            </Hidden>
+            <Box minHeight="90vh">
+              <Switch>
+                <Route exact path="/" component={Homepage}/>
+                <Route exact path="/about" component={About}/>
+              </Switch>
+            </Box>
           </Box>
         </ThemeProvider>
       </Router>
