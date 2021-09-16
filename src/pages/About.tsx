@@ -44,7 +44,7 @@ const About: React.FC = ({}): ReactElement => {
   return (
     <Box margin="150px">
       <Grid container justifyContent="space-between" spacing={5}>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={5}>
           {Information.map((obj)=> {
             return (
               <>

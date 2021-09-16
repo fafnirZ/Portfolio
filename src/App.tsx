@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Box, ThemeProvider, createTheme } from '@material-ui/core';
 
-
 //global stylesheet
 import './css/style.css';
 
