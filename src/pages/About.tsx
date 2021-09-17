@@ -3,6 +3,7 @@ import { useTheme } from '@material-ui/core/styles';
 import { Box, Grid, Typography, Card, useMediaQuery } from '@material-ui/core';
 import CodeIcon from '@material-ui/icons/Code';
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
 const Information = [
   {
@@ -52,45 +53,53 @@ const About: React.FC = ({}): ReactElement => {
     <Box margin={mdDown ? "50px" : "150px"}>
       <Grid container justifyContent="space-between" spacing={5}>
         <Grid item xs={12} md={5}>
-          {Information.map((obj)=> {
-            return (
-              <>
-                <Typography variant="h5" color="primary">
-                  {obj.title}
-                </Typography>
-                <Typography variant="body1" color="secondary">
-                  {obj.body}
-                </Typography>
-              </>
-            )
-          })}
-        </Grid>
-        <Grid item xs={12} md={4}>
-          <Box
-            display="flex"
-            flexDirection="column"
-            alignItems="center"
-            gridGap="20px"
-          >
-            {Cards.map((card) => {
+          <Box display="flex" flexDirection="column" gridGap="10px">
+            {Information.map((obj)=> {
               return (
-                <CardContainer
-                  style={{
-                    background: cardColor
-                  }}
-                  elevation={10}
-                >
-                  <Typography variant="subtitle1" color="primary">
-                    {card.heading}
+                <>
+                  <Typography variant="h5" color="primary">
+                    {obj.title}
                   </Typography>
                   <Typography variant="body1" color="secondary">
-                    {card.content} 
+                    {obj.body}
                   </Typography>
-                  <CodeIcon color="secondary" />
-                </CardContainer>
+                </>
               )
             })}
           </Box>
+        </Grid>
+        <Grid item xs={12} md={4}>
+          <motion.div
+            initial = {{ width: 0, height: 0}}
+            animate = {{ rotate: 360, width: "100%", height: "100%" }}
+            transition = {{ duration: 0.5 }}
+          >
+            <Box
+              display="flex"
+              flexDirection="column"
+              alignItems="center"
+              gridGap="20px"
+            >
+              {Cards.map((card) => {
+                return (
+                  <CardContainer
+                    style={{
+                      background: cardColor
+                    }}
+                    elevation={10}
+                  >
+                    <Typography variant="subtitle1" color="primary">
+                      {card.heading}
+                    </Typography>
+                    <Typography variant="body1" color="secondary">
+                      {card.content} 
+                    </Typography>
+                    <CodeIcon color="secondary" />
+                  </CardContainer>
+                )
+              })}
+            </Box>
+          </motion.div>
         </Grid>
       </Grid>
     </Box>

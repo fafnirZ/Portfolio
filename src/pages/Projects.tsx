@@ -14,6 +14,7 @@ const ButtonContainer = styled.button`
   height: 50px;
   background: var(--background-light);
   border: none;
+  border-radius: 3px;
   margin: 10px;
 
   /* transitions */

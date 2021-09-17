@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { Box, ThemeProvider, createTheme, Hidden } from '@material-ui/core';
+import { AnimatePresence } from 'framer-motion';
 
 //global stylesheet
 import './css/style.css';
@@ -49,11 +50,13 @@ function App() {
               <Sidebar page={page} setPage={handleSetPage}/>
             </Hidden>
             <Box minHeight="90vh">
-              <Switch>
-                <Route exact path="/" component={Homepage}/>
-                <Route exact path="/about" component={About}/>
-                <Route exact path="/projects" component={Projects}/>
-              </Switch>
+              <AnimatePresence exitBeforeEnter initial={false}> 
+                <Switch>
+                  <Route exact path="/" component={Homepage}/>
+                  <Route exact path="/about" component={About}/>
+                  <Route exact path="/projects" component={Projects}/>
+                </Switch>
+              </AnimatePresence>
             </Box>
           </Box>
         </ThemeProvider>
