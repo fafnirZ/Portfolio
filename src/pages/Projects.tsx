@@ -2,6 +2,9 @@ import React, { ReactElement, useState, useEffect } from 'react';
 import { Grid, Box, Typography, Card } from '@material-ui/core';
 import styled from 'styled-components';
 
+// own imports
+import ModalObject from 'src/components/ModalObject';
+
 interface Props {
 
 }
@@ -12,12 +15,15 @@ const ButtonContainer = styled.button`
   background: var(--background-light);
   border: none;
   margin: 10px;
+
+  /* transitions */
+  transition: all .2s ease in;
+  -moz-transition: all .2s ease-in;
+  -o-transition: all .2s ease-in;
+  -webkit-transition: all .2s ease-in;
   
   &:hover {
-    transform: scale(102%);
-  }
-  &:active {
-    transform: scale(98%);
+    background: var(--primary);
   }
 
 `;
@@ -37,6 +43,12 @@ const tempdata = [
 const Projects: React.FC<Props> = ({}): ReactElement => {
   const cardColor = getComputedStyle(document.documentElement).getPropertyValue('--card-default')
   
+  const [open, setOpen] = useState(false);
+
+  const handleClose = () => {
+    setOpen(false);
+  }
+
   return (
     <Box display="flex" flexDirection="column">
       <Box margin="50px 0">
@@ -60,6 +72,7 @@ const Projects: React.FC<Props> = ({}): ReactElement => {
                     background: cardColor
                   }}
                   elevation={5}
+                  onClick={()=> {setOpen(true)}}
                 >
                 </CardContainer>
               </Grid>
@@ -67,6 +80,9 @@ const Projects: React.FC<Props> = ({}): ReactElement => {
           })}
         </Grid>
       </Box>
+      <ModalObject open={open} handleClose={handleClose}>
+        hi
+      </ModalObject>
     </Box>
   );
 };
