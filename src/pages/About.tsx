@@ -37,7 +37,8 @@ const Cards = [
 
 const CardContainer = styled(Card)`
   height: 100px;
-  width: min(70%, 300px);
+  /* width: min(70%, 300px); */
+  width: 300px;
   border-radius: 3px;
   padding: 5px;
 `;
@@ -47,6 +48,7 @@ const About: React.FC = ({}): ReactElement => {
   const theme = useTheme();
   const mdDown = useMediaQuery(theme.breakpoints.down('md'));
 
+  // get global css variable for color
   const cardColor = getComputedStyle(document.documentElement).getPropertyValue('--card-default')
 
   return (
@@ -69,22 +71,25 @@ const About: React.FC = ({}): ReactElement => {
           </Box>
         </Grid>
         <Grid item xs={12} md={4}>
-          <motion.div
-            initial = {{ width: 0, height: 0}}
-            animate = {{ rotate: 360, width: "100%", height: "100%" }}
-            transition = {{ duration: 0.5 }}
+          <Box
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+            gridGap="20px"
           >
-            <Box
-              display="flex"
-              flexDirection="column"
-              alignItems="center"
-              gridGap="20px"
-            >
-              {Cards.map((card) => {
-                return (
+            {Cards.map((card, index) => {
+              return (
+                <motion.div
+                initial = {{ y : '-100vh', opacity: 0 }}
+                animate = {{ y : 0, opacity: 1 }}
+                transition = {{ 
+                  duration: 0.3 * index ,
+                  type: 'spring',
+                }}
+                >
                   <CardContainer
                     style={{
-                      background: cardColor
+                      background: cardColor,
                     }}
                     elevation={10}
                   >
@@ -96,10 +101,10 @@ const About: React.FC = ({}): ReactElement => {
                     </Typography>
                     <CodeIcon color="secondary" />
                   </CardContainer>
-                )
-              })}
-            </Box>
-          </motion.div>
+                </motion.div>
+              )
+            })}
+          </Box>
         </Grid>
       </Grid>
     </Box>
