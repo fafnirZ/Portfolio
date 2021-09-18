@@ -45,8 +45,8 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar />
       <Router history={history}>
+        <Navbar />
         <ThemeProvider theme={theme}>
           <Box display="flex">
             <Hidden mdDown>

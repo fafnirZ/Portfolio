@@ -2,18 +2,14 @@ import React, { ReactElement, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Link, Box, Typography } from '@material-ui/core';
 import { NavLink } from 'react-router-dom';
+import Links from 'src/Data/Links';
 
 interface Props {
   page : string,
   setPage : (event: React.SyntheticEvent) => void
 }
 
-const links = [
-  {'display': 'Home', 'link': '/'}, 
-  {'display': 'About me', 'link': '/about'},
-  {'display': 'Projects', 'link': '/projects'},
-  {'display': 'Blogs', 'link': '/blogs'},
-]
+
 
 const SideContainer = styled.div`
   height: 90vh;
@@ -47,7 +43,7 @@ const IconContainer = styled.div`
 const Sidebar: React.FC<Props> = ({ page, setPage }): ReactElement => {
   return (
     <SideContainer>
-      {links.map((item)=> {
+      {Links.map((item)=> {
         return (
           <Box margin="20px">
             <NavLink

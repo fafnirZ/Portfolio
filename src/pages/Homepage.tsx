@@ -43,7 +43,7 @@ const Homepage: React.FC<Props> = ({}): ReactElement => {
       >
         <Grid item xs={12} md={5}>
           <Typography variant="h5" color="secondary" id="text">
-            <HackerWords Word="Third year, Software Engineer" />
+            Third year, Software Engineer
           </Typography>
         </Grid>
         <Grid item xs={12} md={3}>
