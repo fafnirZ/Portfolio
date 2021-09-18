@@ -11,6 +11,7 @@ import Projects from './Projects';
 import ScrollBlink from 'src/components/animations/ScrollBlink';
 import OperaBridge from 'src/components/animations/OperaBridge';
 import Opera from 'src/components/animations/Opera';
+import HackerWords from 'src/components/animations/HackerWords';
 
 interface Props {
   
@@ -42,7 +43,7 @@ const Homepage: React.FC<Props> = ({}): ReactElement => {
       >
         <Grid item xs={12} md={5}>
           <Typography variant="h5" color="secondary" id="text">
-            Third year, Software Engineer
+            <HackerWords Word="Third year, Software Engineer" />
           </Typography>
         </Grid>
         <Grid item xs={12} md={3}>

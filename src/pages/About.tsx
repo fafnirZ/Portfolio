@@ -80,7 +80,7 @@ const About: React.FC = ({}): ReactElement => {
             {Cards.map((card, index) => {
               return (
                 <motion.div
-                initial = {{ y : '-100vh', opacity: 0 }}
+                initial = {{ y : -1*(index)*100 , opacity: 0 }}
                 animate = {{ y : 0, opacity: 1 }}
                 transition = {{ 
                   duration: 0.3 * index ,

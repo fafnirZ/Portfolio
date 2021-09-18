@@ -2,6 +2,7 @@ import React, { ReactElement, useState, useEffect } from 'react';
 import { Link, Box, Typography } from '@material-ui/core';
 import styled from 'styled-components';
 import Avatar from 'src/assets/me-pixel.png';
+import HackerWords from './animations/HackerWords';
 interface Props {
 
 }
@@ -36,7 +37,7 @@ const Navbar: React.FC<Props> = ({}): ReactElement => {
       </Box>
       <Box className="text_container">
         <Typography variant="h5" color="secondary" >
-          Hi, I'm Jacky
+          <HackerWords Word="Hi, I'm Jacky"/>
         </Typography>
       </Box>
     </NavContainer>   
