@@ -1,5 +1,6 @@
 import React, { ReactElement, useState, useEffect } from 'react';
 import { Grid, Box, Typography, Card, useMediaQuery, useTheme } from '@material-ui/core';
+import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
 // own imports
@@ -40,11 +41,18 @@ const tempdata = [
   {},{},{},{},{},{}
 ]
 
+const buttons = [
+  {name: "Frontend"},
+  {name: "Backend"},
+  {name: "Other"},
+]
+
 
 const Projects: React.FC<Props> = ({}): ReactElement => {
   const cardColor = getComputedStyle(document.documentElement).getPropertyValue('--card-default')
   const theme = useTheme();
   const mdDown = useMediaQuery(theme.breakpoints.down('md'));
+  const smDown = useMediaQuery(theme.breakpoints.down('sm'));
 
   const [open, setOpen] = useState(false);
 
@@ -59,30 +67,53 @@ const Projects: React.FC<Props> = ({}): ReactElement => {
       marginBottom="50px"
       marginLeft={ mdDown ? "50px" : "150px" }
     >
-      <Box margin="50px 0">
-        <ButtonContainer>
-          <Typography color="secondary">Frontend</Typography>
-        </ButtonContainer>
-        <ButtonContainer>
-          <Typography color="secondary">Backend</Typography>
-        </ButtonContainer>
-        <ButtonContainer>
-          <Typography color="secondary">Other</Typography>
-        </ButtonContainer>
+      <Box margin="50px 0" display="flex">
+        {buttons.map((button, index) => {
+          return (
+            <motion.div
+              // 150 is width of button
+              initial={{ x: -1*index*(150) }}
+              animate={{ x: 0 }}
+              transition={{ 
+                duration: 0.6,
+                type: 'spring'
+              }}
+            >
+              <ButtonContainer>
+                <Typography color="secondary">{button.name}</Typography>
+              </ButtonContainer>
+            </motion.div>
+          )
+        })}
       </Box>
       <Box>
         <Grid container spacing={3}>
-          {tempdata.map((obj) => {
+          {tempdata.map((obj, index) => {
             return (
               <Grid item xs={12} md={4}>
-                <CardContainer
-                  style={{
-                    background: cardColor
+                <motion.div
+                  initial={{
+                    x: -1 * (index % 3) * 300,
+                    y: -1 * (Math.floor(index/3)) * 250
                   }}
-                  elevation={5}
-                  onClick={()=> {setOpen(true)}}
+                  animate={{
+                    x: 0,
+                    y: 0
+                  }}
+                  transition={{ 
+                    duration: 0.5,
+                    type: 'spring'
+                  }}
                 >
-                </CardContainer>
+                  <CardContainer
+                    style={{
+                      background: cardColor
+                    }}
+                    elevation={5}
+                    onClick={()=> {setOpen(true)}}
+                  >
+                  </CardContainer>
+                </motion.div>
               </Grid>
             )
           })}

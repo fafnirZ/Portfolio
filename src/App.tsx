@@ -53,7 +53,7 @@ function App() {
               <Sidebar page={page} setPage={handleSetPage}/>
             </Hidden>
             <Box minHeight="90vh">
-              <AnimatePresence exitBeforeEnter initial={false}> 
+              <AnimatePresence exitBeforeEnter initial={true}> 
                 <Switch>
                   <Route exact path="/" component={Homepage}/>
                   <Route exact path="/about" component={About}/>
