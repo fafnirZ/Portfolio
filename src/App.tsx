@@ -1,6 +1,7 @@
 // import dependencies
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Router, Switch, Route } from 'react-router-dom';
+import { createBrowserHistory as createHistory } from 'history';
 import { Box, ThemeProvider, createTheme, Hidden } from '@material-ui/core';
 import { AnimatePresence } from 'framer-motion';
 
@@ -31,6 +32,8 @@ const theme = createTheme({
 
 });
 
+// creating history
+const history = createHistory();
 
 function App() {
   const [page, setPage] = useState('/');
@@ -43,7 +46,7 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <Router>
+      <Router history={history}>
         <ThemeProvider theme={theme}>
           <Box display="flex">
             <Hidden mdDown>

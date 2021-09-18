@@ -21,6 +21,10 @@ const SideContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  /* sticky sidebar */
+  position: sticky;
+  top: 0;
 `;
 
 const IconContainer = styled.div`

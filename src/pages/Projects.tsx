@@ -1,5 +1,5 @@
 import React, { ReactElement, useState, useEffect } from 'react';
-import { Grid, Box, Typography, Card } from '@material-ui/core';
+import { Grid, Box, Typography, Card, useMediaQuery, useTheme } from '@material-ui/core';
 import styled from 'styled-components';
 
 // own imports
@@ -43,7 +43,9 @@ const tempdata = [
 
 const Projects: React.FC<Props> = ({}): ReactElement => {
   const cardColor = getComputedStyle(document.documentElement).getPropertyValue('--card-default')
-  
+  const theme = useTheme();
+  const mdDown = useMediaQuery(theme.breakpoints.down('md'));
+
   const [open, setOpen] = useState(false);
 
   const handleClose = () => {
@@ -51,7 +53,12 @@ const Projects: React.FC<Props> = ({}): ReactElement => {
   }
 
   return (
-    <Box display="flex" flexDirection="column">
+    <Box
+      display="flex"
+      flexDirection="column"
+      marginBottom="50px"
+      marginLeft={ mdDown ? "50px" : "150px" }
+    >
       <Box margin="50px 0">
         <ButtonContainer>
           <Typography color="secondary">Frontend</Typography>

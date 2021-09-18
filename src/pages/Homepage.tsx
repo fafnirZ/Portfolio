@@ -2,12 +2,16 @@ import React, { ReactElement } from 'react';
 import { Typography, Button } from '@material-ui/core';
 import styled from 'styled-components';
 
+import About from './About';
+import Projects from './Projects';
+
 interface Props {
   
 }
 
 const Container = styled.div`
   margin: 100px 450px;
+  margin-bottom: 300px;
   display: grid;
   grid-template-rows: 400px 40px;
   grid-template-columns: 400px 150px;
@@ -31,6 +35,7 @@ const Container = styled.div`
 
 const Homepage: React.FC<Props> = ({}): ReactElement => {
   return (
+    <>
     <Container>
       <Typography variant="h5" color="secondary" id="text">
         Third year, Software Engineer
@@ -39,6 +44,9 @@ const Homepage: React.FC<Props> = ({}): ReactElement => {
         contact me
       </Button>
     </Container>
+    <About />
+    <Projects />
+    </>
   )
 };
 
