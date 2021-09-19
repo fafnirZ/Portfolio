@@ -7,7 +7,7 @@ interface StyledProps {
 
 
 const Container = styled.div<StyledProps>`
-  width: min(90%, 1000px);
+  width: min(80vw, 800px);
   .path {
     stroke: var(--secondary);
     stroke-dasharray:1000;
@@ -22,7 +22,7 @@ const Container = styled.div<StyledProps>`
       }
     }
 
-    @media only screen and (min-width: 100px) {
+    @media only screen and (max-width: 500px) {
       #graphic-small {
           width: 100%;
           height: 300px;

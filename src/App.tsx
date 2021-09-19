@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Router, Switch, Route } from 'react-router-dom';
 import { createBrowserHistory as createHistory } from 'history';
-import { Box, ThemeProvider, createTheme, Hidden } from '@material-ui/core';
+import { Box, ThemeProvider, createTheme, Hidden, responsiveFontSizes } from '@material-ui/core';
 import { AnimatePresence } from 'framer-motion';
 
 //global stylesheet
@@ -19,7 +19,7 @@ import Navbar from './components/Navbar';
 
 
 // theme declaration
-const theme = createTheme({
+let theme = createTheme({
   palette: {
     // for buttons
     primary: {
@@ -29,8 +29,23 @@ const theme = createTheme({
       main: "#FFFFFF"
     } 
   }, 
-
 });
+
+theme.typography.h5 = {
+  ...theme.typography.h5,
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '1rem'
+  }
+}
+
+theme.typography.body1 = {
+  ...theme.typography.h5,
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '0.8rem'
+  }
+}
+
+// theme = responsiveFontSizes(theme);
 
 // creating history
 const history = createHistory();
