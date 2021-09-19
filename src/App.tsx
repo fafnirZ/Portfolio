@@ -39,7 +39,7 @@ theme.typography.h5 = {
 }
 
 theme.typography.body1 = {
-  ...theme.typography.h5,
+  ...theme.typography.body1,
   [theme.breakpoints.down('sm')]: {
     fontSize: '0.8rem'
   }
